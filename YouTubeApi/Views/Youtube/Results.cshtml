@@ -1,0 +1,132 @@
+﻿@model IEnumerable<YouTubeApi.Models.YouTubeVideoModel>
+
+@{
+    ViewData["Title"] = "YouTube Search Results";
+    var currentQuery = ViewData["CurrentQuery"] as string;
+    var sortBy = ViewData["SortBy"] as string;
+    var nextPageToken = ViewData["NextPageToken"] as string;
+    var prevPageToken = ViewData["PrevPageToken"] as string;
+}
+<div class="container">
+    <div class="text-left mt-4">
+        <a class="btn btn-lg btn-universal" href="/Youtube/Search">Back To Search</a>
+    </div>
+    <h2 class="my-5 search-results-title">Search Results for '@currentQuery'</h2>
+    <div class="d-flex align-items-center mb-4">
+        <h4 class="me-2 sort-by-title">Sort By:</h4>
+        <div class="btn-group" role="group" aria-label="Sort Options">
+            <button type="button" class="btn btn-universal me-2" onclick="sortResults('relevance')">Relevance</button>
+            <button type="button" class="btn btn-universal me-2" onclick="sortResults('viewCount')">View Count</button>
+            <button type="button" class="btn btn-universal" onclick="sortResults('rating')">Rating</button>
+            <button type="button" class="btn btn-universal me-2" onclick="sortResults('date')">Upload Date</button>
+            
+        </div>
+    </div>
+    @if (Model != null && Model.Any())
+    {
+        <ul class="list-group">
+            @foreach (var video in Model)
+            {
+                <li class="list-group-item d-flex flex-column video-item">
+                    <div class="d-flex align-items-start">
+                        <img src="@video.ThumbnailUrl" class="img-thumbnail video-thumbnail" alt="@video.Title">
+                        <div class="video-details">
+                            <h5 class="result-page-title">@video.Title</h5>
+                            <p class="channel-text mb-1">
+                                <a href="@video.ChannelUrl" target="_blank" class="channel-link d-flex align-items-center">
+                                    <img src="@video.ChannelThumbnailUrl" alt="@video.ChannelTitle" class="channel-thumbnail me-2">
+                                    @video.ChannelTitle
+                                </a>
+                            </p>
+                            <p class="duration-text mb-1">Duration: <span class="duration">@video.GetFormattedDuration()</span></p>
+                            <hr class="divider">
+                            <p class="mb-1 description-text">@video.Description</p> 
+                            <div class="d-flex justify-content-start mt-2">
+                                <button class="btn btn-play toggle-video" data-video-id="@video.Id">Play Video</button>
+                                <a href="https://www.youtube.com/watch?v=@video.Id" target="_blank" class="btn btn-details ms-2">Details</a>
+                             
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn btn-back" data-bs-dismiss="modal">Back</button>
+                                </div>
+                                <hr class="divider">
+                                <div class="modal-body">
+                                    <div class="video-player-container">
+                                        <iframe id="modalVideo" src="" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+        <div class="pagination-container d-flex justify-content-center align-items-center my-5">
+            <div class="me-3">
+                @if (!string.IsNullOrEmpty(ViewData["PrevPageToken"] as string))
+                {
+                    <a href="@Url.Action("SearchResults", new { query = ViewData["CurrentQuery"], sortBy = ViewData["SortBy"], pageToken = ViewData["PrevPageToken"], 
+                    currentPage = ViewData["CurrentPage"], isNext = false })" class="btn btn-universal">Back</a>
+                }
+                else
+                {
+                    <a class="btn btn-universal disabled">Back</a>
+                }
+            </div>
+            <div class="page-number mx-3">Page @ViewData["CurrentPage"]</div>
+            <div class="ms-3">
+                @if (!string.IsNullOrEmpty(ViewData["NextPageToken"] as string))
+                {
+                    <a href="@Url.Action("SearchResults", new { query = ViewData["CurrentQuery"], sortBy = ViewData["SortBy"], pageToken = ViewData["NextPageToken"], 
+                    currentPage = ViewData["CurrentPage"], isNext = true })" class="btn btn-universal">Next</a>
+                }
+                else
+                {
+                    <a class="btn btn-universal disabled">Next</a>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <h2 class="my-5 search-results-title">No results found for your query</h2>
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".toggle-video").click(function () {
+            var videoId = $(this).data("video-id");
+            var videoUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+            $("#modalVideo").attr("src", videoUrl);
+            $('#videoModal').modal('show');
+        });
+
+        $('#videoModal').on('hidden.bs.modal', function () {
+            $("#modalVideo").attr("src", "");
+        });
+    });
+
+    function sortResults(sortBy) {
+        const currentQuery = '@currentQuery';
+        window.location.href = `/YouTube/SearchResults?query=${encodeURIComponent(currentQuery)}&sortBy=${sortBy}`;
+    }
+
+
+    function navigateToPage(pageToken, currentPage) {
+        const query = '@ViewData["CurrentQuery"]';
+        const sortBy = '@ViewData["SortBy"]';
+
+        const url = `/YouTube/SearchResults?query=${encodeURIComponent(query)}&sortBy=${encodeURIComponent(sortBy)}&pageToken=${encodeURIComponent(pageToken)}&currentPage=${currentPage}`;
+        window.location.href = url;
+    }
+
+</script>

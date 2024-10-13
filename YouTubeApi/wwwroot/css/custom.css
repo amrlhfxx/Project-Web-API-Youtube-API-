@@ -1,0 +1,548 @@
+﻿/* Base HTML settings */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Focus styles */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #0FA4AF;
+}
+
+/* Body styles */
+html {
+    height: 100%; /* Make sure the html takes full height */
+    font-size: 14px;
+}
+
+
+body {
+    margin: 0; /* Remove default margin to eliminate gaps */
+    padding: 0; /* Remove any padding */
+    padding-bottom: 60px; /* Space for the footer */
+    color: #333; /* Default text color */
+    font-family: 'Arial', sans-serif; /* Modern font for the body */
+    background-color: #181818; /* Set the background color to red */
+    height: 100%; /* Ensure the body takes the full height */
+}
+
+
+/* Ensure the container has no background color */
+.container {
+    background-color: transparent !important; /* Force transparency */
+    padding: 20px; /* Keep padding */
+}
+
+
+
+
+/* Layout-specific styles */
+.header-custom {
+    background-color: #000000; /* Dark teal for navbar */
+    color: #ffffff; /* White text */
+}
+
+/* Footer Section styles */
+.footer-custom {
+    background-color: #1f618d; /* Set footer background to black */
+    color: #ffffff; /* Set footer font color to white */
+    padding: 20px 0; /* Add padding to footer */
+    position: relative; /* Ensure footer is positioned correctly */
+    z-index: 1; /* Ensure footer is on top of the background */
+}
+
+
+
+/* Navbar styles */
+.navbar {
+    background-color: #1f618d !important; /* Black for navbar */
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #ffffff !important; /* White text for brand and links */
+}
+
+.navbar .nav-link:hover {
+    color: #A1D6E2 !important; /* Light teal on hover (optional) */
+}
+
+.nav-item {
+    margin: 0; /* Remove default margin for the heading */
+    color: black; /* Set text color to black */
+    font-size: 1.3em; /* Adjust font size as needed */
+}
+
+
+
+/* Button Universal */
+
+.btn-universal {
+    background-color: #1f618d; /* Black background */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding for better appearance */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make it inline block */
+    font-size: 16px; /* Set font size */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    border-radius: 5px; /* Rounded corners */
+}
+
+    .btn-universal:hover {
+        background-color: #555; /* Dark gray on hover */
+        color: white; /* Keep text white on hover */
+    }
+
+    .btn-universal:focus {
+        outline: none; /* Remove outline when focused */
+    }
+
+    .btn-universal:active {
+        background-color: #333; /* Darker gray when clicked */
+        color: white; /* Keep text white when clicked */
+    }
+
+
+
+
+
+
+
+
+
+/* Home Page*/
+
+.welcome-header {
+    background-color: white; /* White background for the welcome header */
+    padding: 20px; /* Padding around the header */
+    border-radius: 8px; /* Rounded corners */
+    border: 4px solid black; /* Black border around the section */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 30px; /* Space below the header */
+}
+
+    .welcome-header h1 {
+        margin: 0; /* Remove default margin for the heading */
+        color: black; /* Set text color to black */
+        font-size: 3em; /* Adjust font size as needed */
+    }
+
+    .welcome-header p {
+        color: black; /* Set paragraph text color to black */
+        font-size: 1em; /* Adjust font size as needed */
+        margin-top: 10px; /* Add some space above the paragraph */
+    }
+
+
+.trending-header {
+    background-color: white; /* White background for the header */
+    padding: 0px; /* Padding around the header */
+    border-radius: 8px; /* Rounded corners */
+    border: 4px solid black; /* Black border around the section */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 30px; /* Space below the header */
+}
+
+    .trending-header h2 {
+        margin: 0; /* Remove default margin for the heading */
+        color: black; /* Set text color to black */
+        font-size: 2.5em; /* Adjust font size as needed */
+        font-family: 'Arial', sans-serif; /* Modern font for the body */
+    }
+
+
+.trending-section {
+    margin: 20px 0; /* Space above and below the section */
+    background-color: white; /* White background */
+    border: 4px solid black; /* Black border around the section */
+    padding: 20px; /* Padding around the content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 100%; /* Allow the section to take the full width */
+}
+
+.trending-videos {
+    display: flex;
+    flex-wrap: wrap; /* Wrap videos to new line */
+    justify-content: center; /* Center the video cards */
+}
+
+
+.video-card {
+    border: 2px solid black; /* Border around the video card */
+    border-radius: 8px; /* Rounded corners for the card */
+    background-color: white; /* White background for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: relative; /* Position relative for absolute children */
+    margin-bottom: 15px; /* Space below the video card */
+    overflow: hidden; /* Prevent overflow of the iframe */
+    height: 0; /* Set height to zero initially for aspect ratio */
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+    .video-card iframe {
+        position: absolute; /* Position the iframe absolutely */
+        top: 0; /* Align to the top */
+        left: 0; /* Align to the left */
+        width: 100%; /* Make iframe full width */
+        height: 100%; /* Make iframe full height */
+        border: none; /* Remove default iframe border */
+    }
+
+.video-title {
+    margin-top: 5px; /* Space above the title */
+    font-size: 1em; /* Adjust title font size */
+    text-align: center; /* Center the title */
+    padding: 0 5px; /* Add some padding */
+}
+
+
+
+/* SEARCH PAGE*/
+
+
+.search-section {
+    background-color: white; /* White background */
+    border: 2px solid black; /* Black border */
+    padding: 20px; /* Padding around the content */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+    margin: 20px; /* Margin for spacing around the section */
+}
+
+.search-title {
+    margin: 10px; /* Space below the title */
+    font-size: 24px; /* Larger font size for title */
+    font-weight: bold; /* Bold title for emphasis */
+}
+
+.input-group .form-control {
+    border: 2px solid black; /* Black border for the input box */
+}
+
+    .input-group .form-control:focus {
+        border-color: blue; /* Change to blue on focus */
+        box-shadow: 0 0 5px rgba(0, 0, 255, 0.5); /* Optional: add a subtle glow */
+    }
+
+.input-group .btn {
+    margin-left: 20px; /* Adjust the value to your preference */
+}
+
+/*Popular Search*/
+
+.search-section {
+    background-color: white; /* White background */
+    border: 2px solid black; /* Black border */
+    padding: 20px; /* Padding around the content */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+    margin: 20px 0; /* Margin for spacing above and below */
+}
+
+.search-title {
+    margin: 10px 0; /* Space below the title */
+}
+
+.input-group .form-control {
+    border: 2px solid black; /* Black border for the input box */
+}
+
+.popular-searches-section {
+    background-color: white; /* White background */
+    border: 2px solid black; /* Black border */
+    padding: 20px; /* Padding around the content */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+    margin: 20px 0; /* Margin for spacing above and below */
+}
+
+.popular-searches-title {
+    margin: 10px 0; /* Space above and below the title */
+}
+
+.popular-searches .list-group-item {
+    border: 1px solid #ddd; /* Light border for list items */
+    border-radius: 5px; /* Rounded corners for list items */
+}
+
+    .popular-searches .list-group-item a {
+        text-decoration: none; /* No underline on links */
+        color: black; /* Link color */
+    }
+
+        .popular-searches .list-group-item a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+.btn-popular {
+    display: block; /* Make the button fill the width */
+    width: 100%; /* Full width button */
+    padding: 10px; /* Padding for the button */
+    text-align: center; /* Center the text */
+    background-color: #1f618d; /* Black button color */
+    border: 1px solid #ddd;
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Slightly rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+    .btn-popular:hover {
+        background-color: #333; /* Darker shade of black on hover */
+        color: white; /* Keep text color white on hover */
+    }
+
+.popular-searches .list-group-item {
+    margin-bottom: 10px; /* Space between list items */
+}
+
+
+
+
+
+/*  RESULT */
+
+
+/* Search Results Title */
+.search-results-title {
+    color: white; /* Change font color to white */
+}
+
+
+/* Increase the size of the video thumbnails, but don't exceed the natural size */
+.video-thumbnail {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 15px;
+    border: 4px solid #1f618d;
+}
+
+/* Video details section */
+.video-details {
+    flex-grow: 1;
+}
+
+/* Results Page Specific Styles */
+.result-page-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 12px;
+}
+
+.result-page-title:hover {
+    color: #964734;
+    text-decoration: underline;
+}
+
+/* Channel text */
+.channel-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #0FA4AF;
+    margin-bottom: 5px;
+}
+
+/* Channel link styling */
+.channel-link {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.channel-link:hover {
+    color: #024950;
+}
+
+/* Channel thumbnail */
+.channel-thumbnail {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+/* Video duration text */
+.duration-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+/* Horizontal line */
+.divider {
+    border: none;
+    height: 4px;
+    background-color: #000000;
+    margin: 0;
+}
+
+.description-text {
+    max-height: 100px; /* Limit the height for the initial view */
+    overflow: hidden; /* Hide overflow to maintain the height limit */
+    transition: max-height 0.3s ease; /* Smooth transition */
+}
+
+    .description-text.expanded {
+        max-height: none; /* Remove height limit when expanded */
+    }
+
+/* Optional: Style for the toggle button */
+.toggle-description {
+    color: #0FA4AF; /* You can customize this color */
+    text-decoration: underline; /* Underline for emphasis */
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+}
+
+
+/* Custom styles for the modal */
+.modal-content {
+    background-color: #ffffff; /* White background for the modal content */
+    border: 4px solid black; /* Remove borders */
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Video Modal */
+.modal-body {
+    padding: 0; /* Remove default padding */
+}
+
+.video-container {
+    padding: 20px 0; /* Add 20px padding above and below the video */
+    display: flex; /* Center align */
+    justify-content: center; /* Center align */
+    align-items: center; /* Center vertically */
+}
+
+.modal-video {
+    width: 100%; /* Full width of modal */
+    height: 400px; /* Set height for the video */
+    border: none; /* Ensure no border around the video */
+    display: block; /* Ensure block-level rendering */
+}
+
+.modal-dialog-centered {
+    max-width: 800px; /* Set max width for the modal */
+    width: 100%; /* Full width on small screens */
+}
+
+
+/* Green Play button styles */
+.btn-play {
+    background-color: green; /* Change background color to green */
+    font-family: 'Open Sans', sans-serif; /* Ensure same font family */
+    font-size: 16px; /* Ensure same font size */
+}
+
+    /* Hover effect for Play button */
+    .btn-play:hover {
+        background-color: darkgreen; /* Darker green on hover */
+    }
+
+
+/* Details Button Styles */
+.btn-details {
+    background-color: #1f618d; /* Same color as the back button */
+    color: white; /* Text color */
+    padding: 8px 20px; /* Padding */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-family: 'Open Sans', sans-serif; /* Font family */
+    text-decoration: none; /* Remove underline */
+}
+
+    .btn-details:hover {
+        background-color: #155a8a; /* Darker shade on hover */
+    }
+
+
+/* Back Button Styles */
+.btn-back {
+    background-color: #1f618d; /* Default color for back button */
+    color: white; /* Text color */
+    padding: 8px 20px; /* Padding */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-family: 'Open Sans', sans-serif; /* Font family */
+
+}
+
+
+/* Styles for the video player container */
+.video-player-container {
+    border-radius: 8px; /* Optional: rounded corners */
+    background-color: white; /* White background for the container */
+    padding: 20px; /* Space between the border and video */
+    margin: 20px 0; /* 20px gap above and below the video player */
+}
+
+/* Styles for the video iframe */
+#modalVideo {
+    width: 100%; /* Ensure it takes the full width */
+    height: 400px; /* Set a fixed height */
+    border: none; /* Remove default border */
+}
+
+
+/* Result Item Styles */
+.video-item {
+    margin-bottom: 20px; /* Gap of 20px from each video item */
+    border: 4px solid #1f618d; /* Black border around each video item */
+    border-radius: 8px; /* Rounded corners for better aesthetics */
+    padding: 15px; /* Padding inside the video item for spacing */
+    background-color: white; /* White background for contrast */
+}
+
+.sort-by-title {
+    color: white; /* Change to the color you want */
+    font-size: 1.5rem; /* Match the font size with your title */
+    font-weight: bold; /* Optional: Make it bold like the title */
+    margin: 0; /* Remove default margin if necessary */
+    
+}
+
+
+
+
+
+/* PAGINATION*/
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.page-number {
+    font-weight: bold; /* Make the page number bold */
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container text-center">
+    <div class="welcome-header">
+    <h1 class="my-5">Welcome to the YouTube Search App</h1>
+    <p>This application lets you search for YouTube videos and browse results in a user-friendly interface.</p>
+    </div>
+    <div class="trending-header">
+        <h2 class="my-5">Trending Videos in Malaysia</h2>
+    </div>
+    <div class="row" id="trending-videos"></div> 
+    <a class="btn btn-lg btn-universal" href="/Youtube/Search">Search Videos</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        const apiKey = 'AIzaSyDx0586INs3gwSQ23uBY1bSUhgTEUTGhT4';
+        const trendingUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=MY&maxResults=9&key=${apiKey}`;
+
+        $.get(trendingUrl, function (data) {
+            console.log(data);
+            data.items.forEach((item) => {
+                const videoId = item.id;
+                const videoEmbed = `
+        <div class="col-md-4 mb-3">
+            <div class="video-card"> <!-- Update this div to use the video-card class -->
+                <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                <div class="video-title">${item.snippet.title}</div> <!-- Added title div -->
+            </div>
+        </div>
+    `;
+
+                $('#trending-videos').append(videoEmbed); 
+            });
+        }).fail(function () {
+            console.error("Error fetching data from YouTube API"); 
+        });
+    });
+</script>

@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Search Videos";
+}
+
+<div class="container">
+    <a class="btn btn-lg btn-universal" href="/">Back Home</a>
+
+    <div class="search-section">
+        <h2 class="search-title">Search for YouTube Videos</h2>
+
+        <form method="post" action="/YouTube/SearchResults">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="query" placeholder="Enter video title or keyword" required aria-label="Search query">
+                <button class="btn btn-universal" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Popular Searches Section -->
+    <div class="popular-searches-section">
+        <h4 class="popular-searches-title">Popular Searches in Malaysia</h4>
+        <ul class="list-group mb-3">
+            <li class="list-group-item">
+                <a class="btn btn-popular" href="/YouTube/SearchResults?query=trending+music+Malaysia">Trending Music Malaysia</a>
+            </li>
+            <li class="list-group-item">
+                <a class="btn btn-popular" href="/YouTube/SearchResults?query=Malaysian+food+recipes">Malaysian Food Recipes</a>
+            </li>
+            <li class="list-group-item">
+                <a class="btn btn-popular" href="/YouTube/SearchResults?query=Malaysian+drama">Malaysian Drama</a>
+            </li>
+            <li class="list-group-item">
+                <a class="btn btn-popular" href="/YouTube/SearchResults?query=football+highlights">Football Highlights</a>
+            </li>
+            <li class="list-group-item">
+                <a class="btn btn-popular" href="/YouTube/SearchResults?query=travel+vlogs+Malaysia">Travel Vlogs Malaysia</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
